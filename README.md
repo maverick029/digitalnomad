@@ -1,0 +1,2 @@
+# digitalnomad
+personal website 
