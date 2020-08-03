@@ -1,2 +1,15 @@
-FROM httpd:2.4
-COPY ./public-html/ /usr/local/apache2/htdocs/
+FROM python:3.7-stretch
+
+WORKDIR WORKDIR /usr/src/app
+
+COPY requirements.txt /tmp/requirements.txt
+
+RUN pip install --no-cache-dir -r  /tmp/requirements.txt \
+        && rm /tmp/requirements.txt \
+        && true
+
+COPY . .
+
+CMD ["python", "./app.py"]
+
+EXPOSE 5000
